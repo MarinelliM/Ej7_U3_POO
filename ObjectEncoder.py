@@ -1,10 +1,6 @@
 from pathlib import Path
 import json
 from Lista import Lista
-from Docentes import Docente
-from Investigadores import Investigador
-from DocentesInvestigadores import DI
-from PersonalApoyo import PersonalA
 
 class ObjectEncoder(object):
 
@@ -44,19 +40,11 @@ class ObjectEncoder(object):
                     atributos = elem['__atributos__']
                     T = class_(**atributos)
                     lista.agregarElemento(T)
-                # elif class_name == DI:
-                #     atributos = elem['__atributos__']
-                #     T = class_(**atributos)
-                #     lista.agregarElemento(T)
 
-    #Otra forma de hacerlo
     def mostrarJson(self,ar):
         try:
-            # # Abre el archivo JSON y carga en datos el contenido
             with open(ar) as archivo:
                 datos = json.load(archivo)
-
-            # # Muestra los datos de manera legible
             print(json.dumps(datos, indent=4))
         except FileNotFoundError:
             print("El archivo JSON no existe.")
